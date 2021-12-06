@@ -37,17 +37,9 @@ export class Teacher extends Information {
   @Column()
   phd: string;
 
-  @ManyToMany(() => Student)
+  @ManyToMany(() => Student, (student) => student.teachers)
   @JoinTable()
   students: Student[];
-
-  @ManyToMany(() => Course)
-  @JoinTable()
-  courses: Course[];
-
-  @ManyToMany(() => Calification)
-  @JoinTable()
-  califications: Calification[];
 
   @Column()
   @CreateDateColumn()

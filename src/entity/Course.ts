@@ -34,6 +34,9 @@ export class Course {
   floor: number;
 
   @Column()
+  percentage: number;
+
+  @Column()
   @CreateDateColumn()
   createdAt: Date;
 

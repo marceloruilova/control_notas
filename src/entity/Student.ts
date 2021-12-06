@@ -11,6 +11,7 @@ import {
 import { Information } from "./Information";
 import { Calification } from "./Calification";
 import { Course } from "./Course";
+import { Teacher } from "./Teacher";
 
 @Entity()
 export class Student extends Information {
@@ -25,6 +26,10 @@ export class Student extends Information {
 
   @Column()
   discipline: string;
+
+  @ManyToMany(() => Teacher, (calification) => calification.students)
+  @JoinTable()
+  teachers: Teacher[];
 
   @ManyToMany(() => Course)
   @JoinTable()

@@ -4,7 +4,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Column,
-  OneToOne,
+  ManyToOne,
   JoinColumn,
   OneToMany,
   Timestamp,
@@ -34,7 +34,7 @@ export class Calification {
   @Column()
   percentage: number;
 
-  @OneToOne(() => Course) // specify inverse side as a second parameter
+  @ManyToOne(() => Course) // specify inverse side as a second parameter
   course: Course;
 
   @OneToMany(() => Student, (student) => student.califications, {
