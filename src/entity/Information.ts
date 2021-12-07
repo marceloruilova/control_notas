@@ -17,7 +17,7 @@ export abstract class Information {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true })
+  @Column()
   @IsNumberString()
   @Length(10, 10)
   ci: string;

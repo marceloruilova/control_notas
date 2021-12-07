@@ -17,23 +17,11 @@ export class StudentController {
     return response.send(Repository.findOne(request.params.id));
   }
 
+  //save student and info with id
   static async save(request: Request, response: Response, next: NextFunction) {
     let Repository = getRepository(Student);
-    return response.send(await Repository.save(request.body));
-  }
-
-  //saveTeacher with id
-  static async saveteacher(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
-    let Repository = getRepository(Student);
-    let aux = await Repository.findOne(request.body.teacher_id, {
-      relations: ["teachers"],
-    });
-    aux.teachers = [request.body.teachers];
-    return response.send(await Repository.save(aux));
+    let student = request.body;
+    return response.send(await Repository.save(student));
   }
 
   static async remove(
