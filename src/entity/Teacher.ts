@@ -31,10 +31,10 @@ export class Teacher extends Information {
   @Column()
   degree: string;
 
-  @Column()
+  @Column({ nullable: true })
   university: string;
 
-  @Column()
+  @Column({ nullable: true })
   phd: string;
 
   @ManyToMany(() => Student, (student) => student.teachers)

@@ -5,18 +5,11 @@ import {
   UpdateDateColumn,
   Column,
   ManyToOne,
-  JoinColumn,
+  ManyToMany,
   OneToMany,
   Timestamp,
 } from "typeorm";
-import {
-  Contains,
-  Length,
-  IsDate,
-  IsDateString,
-  IsNumberString,
-  isDateString,
-} from "class-validator";
+import { Contains, Length, IsDateString, Max, Min } from "class-validator";
 import { Student } from "./Student";
 import { Course } from "./Course";
 
@@ -26,18 +19,17 @@ export class Calification {
   id: number;
 
   @Column()
+  @Min(0)
+  @Max(50)
   note: number;
 
-  @Column()
+  @Column({ nullable: true })
   description: string;
 
-  @Column()
-  percentage: number;
-
-  @ManyToOne(() => Course) // specify inverse side as a second parameter
+  @ManyToOne(() => Course)
   course: Course;
 
-  @OneToMany(() => Student, (student) => student.califications, {
+  @ManyToMany(() => Student, (student) => student.califications, {
     cascade: true,
   })
   students: Student[];

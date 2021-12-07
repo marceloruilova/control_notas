@@ -24,21 +24,21 @@ export abstract class Information {
 
   @Column()
   @Length(2, 25)
-  firstName: string;
+  first_name: string;
 
   @Column()
   @Length(2, 25)
   last_name: string;
 
-  @Column()
+  @Column({ nullable: true })
   @Min(0)
   @Max(120)
   age: number;
 
-  @Column()
+  @Column({ nullable: true })
   email: string;
 
-  @Column()
+  @Column({ nullable: true })
   gender: number;
 
   @Column()

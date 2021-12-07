@@ -18,25 +18,26 @@ export class Student extends Information {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  rules: string;
+  @Column({ nullable: true })
+  detentions: string;
 
-  @Column()
-  uniform: string;
+  @Column({ nullable: true })
+  uniform_color: string;
 
   @Column()
   discipline: string;
 
-  @ManyToMany(() => Teacher, (calification) => calification.students)
+  @ManyToMany(() => Teacher, (teacher) => teacher.students, { cascade: true })
   @JoinTable()
   teachers: Teacher[];
 
-  @ManyToMany(() => Course)
+  @ManyToMany(() => Course, { cascade: true })
   @JoinTable()
   courses: Course[];
 
-  @ManyToOne(() => Calification, (calification) => calification.students)
-  califications: Calification;
+  @ManyToMany(() => Calification, (calification) => calification.students)
+  @JoinTable()
+  califications: Calification[];
 
   @Column()
   @CreateDateColumn()

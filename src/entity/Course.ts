@@ -30,7 +30,7 @@ export class Course {
   @Column()
   level: string;
 
-  @Column()
+  @Column({ nullable: true })
   floor: number;
 
   @Column()
