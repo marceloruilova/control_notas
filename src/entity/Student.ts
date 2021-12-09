@@ -35,7 +35,9 @@ export class Student extends Information {
   @JoinTable()
   courses: Course[];
 
-  @ManyToMany(() => Calification, (calification) => calification.students)
+  @ManyToMany(() => Calification, (calification) => calification.students, {
+    cascade: true,
+  })
   @JoinTable()
   califications: Calification[];
 

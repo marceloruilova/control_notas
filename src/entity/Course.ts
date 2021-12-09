@@ -4,8 +4,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Column,
-  OneToOne,
-  JoinColumn,
+  ManyToMany,
+  JoinTable,
   OneToMany,
   Timestamp,
 } from "typeorm";
@@ -25,7 +25,7 @@ export class Course {
   id: number;
 
   @Column()
-  grade: string;
+  name: string;
 
   @Column()
   level: string;
@@ -35,6 +35,10 @@ export class Course {
 
   @Column()
   percentage: number;
+
+  @ManyToMany(() => Student, (student) => student.courses)
+  @JoinTable()
+  students: Student[];
 
   @Column()
   @CreateDateColumn()

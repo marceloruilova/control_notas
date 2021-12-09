@@ -8,6 +8,9 @@ const router = Router();
 //Get all users
 router.get("/", CourseController.all);
 
+//Get courses by name and level
+router.get("/bynameandlevel", CourseController.bynameandlevel);
+
 // Get one user
 router.get("/:id([0-9]+)", CourseController.one);
 

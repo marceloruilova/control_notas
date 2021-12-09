@@ -29,9 +29,7 @@ export class Calification {
   @ManyToOne(() => Course)
   course: Course;
 
-  @ManyToMany(() => Student, (student) => student.califications, {
-    cascade: true,
-  })
+  @ManyToMany(() => Student, (student) => student.califications)
   students: Student[];
 
   @Column()

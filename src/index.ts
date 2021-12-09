@@ -29,12 +29,48 @@ createConnection()
     app.listen(3000);
 
     // insert new data for test
-    await connection.manager.save(
+    const course1 = await connection.manager.save(
+      connection.manager.create(Course, {
+        name: "History",
+        level: "3",
+        percentage: 50,
+      })
+    );
+    const course2 = await connection.manager.save(
+      connection.manager.create(Course, {
+        name: "Phisics",
+        level: "1",
+        percentage: 50,
+      })
+    );
+    const calification1 = await connection.manager.save(
+      connection.manager.create(Calification, {
+        note: 20,
+      })
+    );
+    const calification2 = await connection.manager.save(
+      connection.manager.create(Calification, {
+        note: 20,
+      })
+    );
+    const student = await connection.manager.save(
       connection.manager.create(Student, {
         ci: "148171817",
         first_name: "Juan",
         last_name: "Aleluya",
         discipline: "A",
+        califications: [calification1, calification2],
+        courses: [course1, course2],
+      })
+    );
+    const student2 = await connection.manager.save(
+      connection.manager.create(Student, {
+        ci: "148171047",
+        first_name: "Juan",
+        last_name: "Aleluya",
+        discipline: "A",
+        califications: [calification2],
+        courses: [course2],
       })
     );
     await connection.manager.save(
@@ -47,22 +83,23 @@ createConnection()
     );
     await connection.manager.save(
       connection.manager.create(Course, {
-        grade: "5",
-        level: "A",
+        name: "History",
+        level: "3",
+        percentage: 50,
+        students: [student, student2],
+      })
+    );
+    await connection.manager.save(
+      connection.manager.create(Course, {
+        name: "Social Science",
+        level: "2",
         percentage: 50,
       })
     );
     await connection.manager.save(
       connection.manager.create(Course, {
-        grade: "7",
-        level: "B",
-        percentage: 50,
-      })
-    );
-    await connection.manager.save(
-      connection.manager.create(Course, {
-        grade: "2",
-        level: "C",
+        name: "Phisics",
+        level: "1",
         percentage: 50,
       })
     );
