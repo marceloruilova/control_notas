@@ -4,20 +4,13 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
-import {
-  Contains,
-  Length,
-  Min,
-  Max,
-  IsDateString,
-  IsNumberString,
-} from "class-validator";
+import { Length, Min, Max, IsNumberString } from "class-validator";
 
 export abstract class Information {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   @IsNumberString()
   @Length(10, 10)
   ci: string;

@@ -29,7 +29,7 @@ createConnection()
     app.listen(3000);
 
     // insert new data for test
-    const course1 = await connection.manager.save(
+    /*const course1 = await connection.manager.save(
       connection.manager.create(Course, {
         name: "History",
         level: "3",
@@ -52,32 +52,32 @@ createConnection()
       connection.manager.create(Calification, {
         note: 20,
       })
-    );
-    const student = await connection.manager.save(
+    );*/
+    /*const student = await connection.manager.save(
       connection.manager.create(Student, {
         ci: "148171817",
         first_name: "Juan",
         last_name: "Aleluya",
         discipline: "A",
-        califications: [calification1, calification2],
-        courses: [course1, course2],
+        //califications: [calification1, calification2],
+        //courses: [course1, course2],
       })
     );
     const student2 = await connection.manager.save(
       connection.manager.create(Student, {
         ci: "148171047",
-        first_name: "Juan",
-        last_name: "Aleluya",
+        first_name: "Pedro",
+        last_name: "Merced",
         discipline: "A",
-        califications: [calification2],
-        courses: [course2],
+        //califications: [calification2],
+        //courses: [course2],
       })
     );
     await connection.manager.save(
       connection.manager.create(Teacher, {
         ci: "141181815",
-        first_name: "Juan",
-        last_name: "Aleluya",
+        first_name: "El profe",
+        last_name: "Gran Profe",
         degree: "A",
       })
     );
@@ -107,7 +107,7 @@ createConnection()
       connection.manager.create(Calification, {
         note: 20,
       })
-    );
+    );*/
     console.log(
       "Express server has started on port 3000. Open http://localhost:3000/ to see results"
     );
